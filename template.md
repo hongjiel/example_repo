@@ -1,9 +1,7 @@
----
-title: "Simple document"
-output: github_document
----
+Simple document
+================
 
-```{r chunk_library, message = FALSE}
+``` r
 ## echo=code, eval=running code, message=result
 ## naming chunk as chunk_library
 ## Control+Alt+I
@@ -11,29 +9,30 @@ output: github_document
 library(tidyverse)
 ```
 
-
-I'm an R Markdown document! 
+I’m an R Markdown document!
 <!-- not recommended including comments in a r markdown. -->
 
 # Section 1
 
-Here's a **code chunk** that samples from 
-a _normal distribution_:
+Here’s a **code chunk** that samples from a *normal distribution*:
 
-```{r}
+``` r
 samp = rnorm(100)
 length(samp)
 ```
 
+    ## [1] 100
+
 # Section 2
 
-I can take the mean of the sample, too!
-The mean is `r round(mean(samp), 3)`.
+I can take the mean of the sample, too! The mean is -0.113.
 
 # Section 3
-This is going to make a plot! First I generate a dataframe, then use `ggplot` to make a scatterplot.
 
-```{r}
+This is going to make a plot! First I generate a dataframe, then use
+`ggplot` to make a scatterplot.
+
+``` r
 plot_df =
   tibble(
     x = rnorm(n = 1000),
@@ -43,9 +42,11 @@ plot_df =
 ggplot(plot_df, aes(x=x,y=y))+geom_point()
 ```
 
+![](template_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
 ## Learning Assessment
 
-```{r chunk_assessment}
+``` r
 la_df = tibble(
   norm_samp = rnorm(500, mean = 1),
   norm_samp_pos = norm_samp > 0,
@@ -55,3 +56,6 @@ la_df = tibble(
 ggplot(la_df, aes(x = abs_norm_samp)) + geom_histogram()
 ```
 
+    ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+
+![](template_files/figure-gfm/chunk_assessment-1.png)<!-- -->
