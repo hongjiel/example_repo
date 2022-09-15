@@ -1,1 +1,3 @@
-# example_repo
+# Example Repo
+
+This is ana example repo.
