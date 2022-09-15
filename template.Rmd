@@ -1,0 +1,57 @@
+---
+title: "Simple document"
+output: html_document
+---
+
+```{r chunk_library, message = FALSE}
+## echo=code, eval=running code, message=result
+## naming chunk as chunk_library
+## Control+Alt+I
+## load packages at the very beginning of the rmd.
+library(tidyverse)
+```
+
+
+I'm an R Markdown document! 
+<!-- not recommended including comments in a r markdown. -->
+
+# Section 1
+
+Here's a **code chunk** that samples from 
+a _normal distribution_:
+
+```{r}
+samp = rnorm(100)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r round(mean(samp), 3)`.
+
+# Section 3
+This is going to make a plot! First I generate a dataframe, then use `ggplot` to make a scatterplot.
+
+```{r}
+plot_df =
+  tibble(
+    x = rnorm(n = 1000),
+    y = 1 + 2*x + rnorm(n = 1000)
+  )
+
+ggplot(plot_df, aes(x=x,y=y))+geom_point()
+```
+
+## Learning Assessment
+
+```{r chunk_assessment}
+la_df = tibble(
+  norm_samp = rnorm(500, mean = 1),
+  norm_samp_pos = norm_samp > 0,
+  abs_norm_samp = abs(norm_samp)
+)
+
+ggplot(la_df, aes(x = abs_norm_samp)) + geom_histogram()
+```
+
